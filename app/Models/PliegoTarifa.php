@@ -14,6 +14,7 @@ class PliegoTarifa extends Model
     protected $fillable =[
         'id_tipo_pliego',
         'id_tarifa',
+        'id_demanda',
         'id_validacion',
         'nivel_voltaje',
         'comercial',

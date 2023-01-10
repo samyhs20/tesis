@@ -7,6 +7,7 @@ use App\Models\PliegoTarifa;
 use App\Models\TipoPliego;
 use App\Models\Tarifa;
 
+
 class PliegoTarifaController extends Controller
 {
     //controladores de pliegotarifa.index
@@ -26,14 +27,20 @@ class PliegoTarifaController extends Controller
         foreach ($pliegos as $key => $value) {
             $val = Tarifa::find($value->id_tarifa);
             if (isset($val->codigo_tarifa)) {
-                $value->codigo = $val->codigo_tarifa;
-                $value->descripcion = $val->descripcion;
+                $value->codigo = $val->codigo;
+                
             } else {
                 $value->codigo = '-';
-                $value->descripcion = '-';
             }
-            $value->action = '<a  href="#" data-id="' . $value->id . '" class="btn btn-info btn-sm editbtn" >Edit</a> 
-            <a href="#" data-id="' . $value->id . '"  class="btn btn-danger btn-sm btndelete" >Delete</a>';
+            $value->tarifa=$val->codigo_tarifa;
+            $value->descripcion = $val->descripcion;
+            $value->action =
+                '<a  href="#" data-id="' .
+                $value->id .
+                '" class="btn btn-info btn-sm editbtn" >Edit</a>
+            <a href="#" data-id="' .
+                $value->id .
+                '"  class="btn btn-danger btn-sm btndelete" >Delete</a>';
         }
         //href="{{ route('updateindex', $user->id) }}"
         return response()->json(
@@ -45,7 +52,7 @@ class PliegoTarifaController extends Controller
         );
     }
 
-    //controladores para editar los registros 
+    //controladores para editar los registros
     public function findOneRegistre(Request $request)
     {
         $input = $request->all();
@@ -58,8 +65,9 @@ class PliegoTarifaController extends Controller
             200,
         );
     }
-    public function  updateOneRegistre (Request $request, $id)
-    {   $input = $request->all();
+    public function updateOneRegistre(Request $request, $id)
+    {
+        $input = $request->all();
         $registro = PliegoTarifa::find($id);
         $registro->id_tarifa = $input['tarifa'];
         $registro->id_demanda = $input['categoria'];
@@ -80,7 +88,7 @@ class PliegoTarifaController extends Controller
         $registro->cargo_energia11 = $input['cargo_energia_11'];
         $registro->cargo_energia12 = $input['cargo_energia_12'];
         $registro->cargo_energia13 = $input['cargo_energia_13'];
-        $registro->cargo_energia14= $input['cargo_energia_14'];
+        $registro->cargo_energia14 = $input['cargo_energia_14'];
         $registro->cargo_energia15 = $input['cargo_energia_15'];
         $registro->validacion_ap = $input['validacion_ap'];
         $registro->nivel_voltaje_ap = $input['nivel_ap'];
@@ -103,23 +111,18 @@ class PliegoTarifaController extends Controller
         $registro->rango15 = $input['rango_15'];
 
         $registro->save();
-        return response()->json(['data'=>"realizado", 'id'=>$id], 200);
+        return response()->json(['data' => 'realizado', 'id' => $id], 200);
     }
 
-    public function deleteRegistre($id){
+    public function deleteRegistre($id)
+    {
         $registro = PliegoTarifa::find($id);
-        if($registro->delete()){
-            return response()->json(['data'=>"borrado existoso"]);
-        }else {
-            return response()->json(['data'=>"problemas en el servidor"]);
+        if ($registro->delete()) {
+            return response()->json(['data' => 'borrado existoso']);
+        } else {
+            return response()->json(['data' => 'problemas en el servidor']);
         }
-        
-    }  
-    
-    //CREAR NUEVO PLIEGO TARIFARIO
-    public function import(){
-        return view('pliegotarifa.import');
     }
 
-   
+    
 }

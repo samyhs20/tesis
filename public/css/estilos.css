@@ -112,3 +112,6 @@ color:#24A19C; ;
     overflow: hidden;
     border-top: 1px solid #e9ecef;
 }
+.custom-file-input:lang(es)~.custom-file-label::after {
+    content: "Subir";
+}

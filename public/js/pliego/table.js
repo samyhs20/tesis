@@ -22,6 +22,7 @@ function listar() {
         method: "post",
         data: $("#form2").serialize(),
         success: function (response) {
+            console.log(response.data)
             $("#table_tarifas").DataTable({
                 data: response.data,
                 scrollY: 350,
@@ -43,8 +44,8 @@ function listar() {
                     },
                 },
                 columns: [
-                    { data: "id" },
                     { data: "codigo" },
+                    { data: "tarifa" },
                     { data: "descripcion" },
                     { data: "id_demanda" },
                     { data: "id_validacion" },
@@ -89,8 +90,8 @@ function listar() {
                     },
                 },
                 columns: [
-                    { data: "id" },
                     { data: "codigo" },
+                    { data: "tarifa" },
                     { data: "descripcion" },
                     { data: "validacion_ap" },
                     { data: "nivel_voltaje_ap" },

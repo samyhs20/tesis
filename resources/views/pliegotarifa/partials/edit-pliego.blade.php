@@ -10,8 +10,10 @@
             <div class="col-md-9">
                 <select class="form-control" name="tarifa" id="tarifa" required>
                     @foreach ($tarifas as $tarifa)
-                        <option value="{{ $tarifa->id }}">{{ $tarifa->codigo_tarifa }}:
-                            {{ $tarifa->descripcion }} </option>
+                        <option value="{{ $tarifa->id }}">{{ $tarifa->codigo }}:
+                            {{ $tarifa->descripcion }} 
+                            ( 
+                                {{$tarifa->codigo_tarifa}} )</option>
                     @endforeach
                 </select>
             </div>

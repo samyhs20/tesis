@@ -324,7 +324,7 @@ return [
         ],
         [
             'text' => 'Nuevo Pliego',
-            'route'  => 'pliego.import',
+            'route'  => 'pliego.importview',
             'icon' => 'fas fa-fw fa-file-import',
             'can'=> 'browse-admin'
         ],

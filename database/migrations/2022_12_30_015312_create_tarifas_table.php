@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('tarifas', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo_tarifa',8);
+            $table->string('codigo',8);
+            $table->string('codigo_tarifa',2);
             $table->string('descripcion');
 
         });

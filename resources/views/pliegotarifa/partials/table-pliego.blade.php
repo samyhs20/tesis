@@ -29,8 +29,8 @@
         <table id="table_tarifas" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID </th>
                     <th>Código</th>
+                    <th>Tarifa </th>
                     <th>Descripción </th>
                     <th>Categoria</th>
                     <th>Validación </th>
@@ -63,8 +63,8 @@
         <table id="table_tarifas_ap" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID </th>
                     <th>Código</th>
+                    <th>Tarifa </th>
                     <th>Descripción </th>
                     <th>Validación </th>
                     <th>Nivel Voltaje</th>

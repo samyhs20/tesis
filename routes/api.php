@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\PliegoTarifaController;
-
+use App\Http\Controllers\ImportarController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,3 +33,5 @@ Route::POST('/pliegos/ap',[PliegoTarifaController::class, 'findpliegos_ap'])->na
 Route::GET('/editregistro/{id}',[PliegoTarifaController::class, 'findOneRegistre']);
 Route::Post('/saveRegistro/{id}',[PliegoTarifaController::class, 'updateOneRegistre']);
 Route::POST('/deleteRegistro/{id}',[PliegoTarifaController::class, 'deleteRegistre']);
+
+Route::post('/pliego/new',[ImportarController::class,'import'])->name('pliego.import');

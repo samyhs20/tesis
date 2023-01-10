@@ -15,6 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['name' => 'Samantha', 'email' => 'samy.hands99@hotmail.com', 'password' => ('password'), 'cedula'=>'1725314445', 'rol'=>'admin']);
+        User::create(['name' => 'Samantha', 'email' => 'samy.hands99@hotmail.com', 'password' => md5('password'), 'cedula'=>'1725314445', 'rol'=>'admin']);
     }
 }
