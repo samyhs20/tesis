@@ -1,0 +1,86 @@
+.control_cesion{
+    display: flex;
+    justify-content: space-between;
+}
+.control_cesion a{
+    text-decoration: none;
+    margin: 0 50px 0 5px;
+    color: black;
+}
+.titulo_len{
+    font-size: 16px !important;
+    margin-left: 5px;
+}
+.navegacion_len{
+    font-size: 14px !important;
+}
+
+.cuadro_carga{
+    margin-top: 30px;
+    border: 1px solid;
+    border-color: rgb(134, 134, 134);
+    padding: 50px 50px;
+}
+.boton_ingreso{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.barra_azul{
+    background-color: #247CC0;
+    border-radius: 10px;
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 0%;
+}
+.barra_verde{
+    background-color: #2EA265 !important;
+    margin-top: 10px;
+    text-align: center;
+}
+.barra_roja{
+    background-color: #DE3152 !important;
+    margin-top: 10px;
+    width: 50% !important;
+    text-align: center;
+}
+.barra_condiciones{
+    margin-top: 10px;
+    width: 50% !important;
+    text-align: center;
+
+}
+.contenedor{
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.posicion{
+    margin-top: 50px;
+}
+.vinculo_paginacion{
+    text-decoration: none;
+}
+.ocultar{
+    display: none;
+}
+.mostrar{
+    display: block;
+}
+.modal_todo{
+    display: none !important;
+}
+.centrar_gif{
+    margin-top: 250px;
+    margin-left: 150px;
+}
+.text_blank{
+    color: white;
+}
+.t_s-15{
+    font-size: 25px;
+}
+.centrar{
+    align-items: center;
+}

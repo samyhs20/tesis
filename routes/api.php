@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\PliegoTarifaController;
 use App\Http\Controllers\ImportarController;
+
+use App\Http\Controllers\CSVController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,9 +33,12 @@ Route::post('/edit',[PliegoTarifaController::class, 'action'])->name('pliego.act
 Route::POST('/pliegos',[PliegoTarifaController::class, 'findpliegos'])->name('pliegos.find');
 Route::POST('/pliegos/ap',[PliegoTarifaController::class, 'findpliegos_ap'])->name('pliegos.find_ap');
 
+//API para guardar nnuevo pliego en la base de datos 
+//Route::post('/pliego/new',[ImportarController::class,'guardarpliego']);
+
 //api de registro de pliegos
 Route::GET('/editregistro/{id}',[PliegoTarifaController::class, 'findOneRegistre']);
 Route::Post('/saveRegistro/{id}',[PliegoTarifaController::class, 'updateOneRegistre']);
 Route::POST('/deleteRegistro/{id}',[PliegoTarifaController::class, 'deleteRegistre']);
 
-Route::post('/pliego/new',[ImportarController::class,'import'])->name('pliego.import');
+Route::POST('/pliego/save',[CSVController::class,'guardarpliego']);
