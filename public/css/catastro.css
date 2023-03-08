@@ -84,3 +84,10 @@
 .centrar{
     align-items: center;
 }
+.logs {
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #CCCCCC;
+    text-align-last: right;
+}

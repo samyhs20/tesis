@@ -11,7 +11,8 @@
     <x-app-layout>
         <div class="py-12">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 " style="text-align: center;">
-                <form action="{{ route('catastro.upload') }}" method="POST" id="subir_form" enctype="multipart/form-data" style="text-align: -webkit-center">
+                <form action="{{ route('catastro.upload') }}" method="POST" id="subir_form" enctype="multipart/form-data"
+                    style="text-align: -webkit-center">
                     @csrf
                     <h3 class="mt-3 text-center">Subir Informacion de las Empresas Distribuidoras</h3>
                     <br>
@@ -48,6 +49,18 @@
                     </div>
                 </form>
                 <p id="response"></p>
+                <div style="text-align: -webkit-center">
+                    <div id="contentLogs"
+                        style="
+                background-color: #FFFFFF;
+                padding: 10px;
+                margin: 10px;
+                width: 70%;
+                border: 1px solid #CCCCCC;
+                text-align-last: left;
+                font-size: 14px">
+                    </div>
+                </div>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -81,8 +94,9 @@
                                         id="close_letras">Cerrar</button>
                                     <button type="submit" class="btn btn-primary">Procesar</button>
                                 </div>
+                            </form>
                         </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

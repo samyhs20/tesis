@@ -8,11 +8,13 @@ class CatastroController extends Controller
 {
     public function index()
     {
+        
         return view('catastro.index');
     }
 
     public function cargaData(Request $request)
     {
+        $content="";
         date_default_timezone_set('America/Guayaquil');
         $size = $request->file('archivo')->getSize();
         $output = [];
@@ -31,9 +33,10 @@ class CatastroController extends Controller
           try {
             $salida = "";
              exec($comando,$output);
-             /*foreach($output as $out){
-                $salida .= $out . "-";  
-             }*/
+             $filename = public_path('data/logs.txt');
+             $content = file_get_contents($filename);
+             
+             
         } catch (Exception $e) {
             // mostrar el mensaje de error
             //nuevos datos
@@ -41,7 +44,7 @@ class CatastroController extends Controller
 
         }
 
-            return response()->json(['msg' => $output]);
+            return response()->json(['msg' => $output, 'content'=>$content]);
         } else {
 
             return response()->json(['msg' => 'Error en carga Archivo no se pudo subir']);

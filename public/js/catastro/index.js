@@ -43,7 +43,8 @@ function subir_archivos(form) {
         barra_estado.classList.add("barra_verde");
         span.innerHTML = "Proceso Completado";
         let respuesta = JSON.parse(peticion.response);
-        console.log(respuesta.msg);
+        $('#contentLogs').html("<pre>"+respuesta.content+"</pre>");
+
 //console.log(respuesta.output);
     });
     //send data

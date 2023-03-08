@@ -15,22 +15,20 @@ def Validador (data,d, name,indice,cuen, ced_ruc, cuenta, inconsis, aux):
     nulos  = nulos[['CUEN', 'CEDULA_RUC','CUENTA_CONTRATO','INDEX']]
     if (nulos.size>0):
         aux=True
-        print("inconsistencias en " + name)
+        #print("inconsistencias en " + name)
         array = nulos.to_numpy()
-        print("Se tiene " + str(array.shape[0]) + " inconsistencias ")
+        print("-> Se tiene " + str(array.shape[0]) + " inconsistencias en la columna >>" + name)
         for i in array:
             indice.append(i[3])
             cuen.append(i[0])
             ced_ruc.append(i[1])
             cuenta.append(i[2])
             inconsis.append(name)
-    else: 
-        print("no existe inconsistencias en " + name )
     return indice, cuen, ced_ruc, cuenta, inconsis, aux
 
 name_inicial = sys.argv[1]
 name_final = sys.argv[2]
-print ("se inicia el proceso de validacion")
+print ("------>  LOG DE CARGA PREVIA DEL ARCHIVO " + name_inicial)
 #print ("entra lo siguiente %s, %s", name_final, name_inicial)
 indice=[]
 cuen=[]
@@ -46,7 +44,7 @@ ruta_completa_final = os.path.abspath(os.path.join('data','inconsistencias','ins
 try:
    df = pd.read_csv(ruta_completa, sep=',',on_bad_lines='skip' )
    df['INDEX'] = df.index
-   print("estamos leyendo el archivo")
+   print(" -> archivo cargado correctamente")
 except Exception as e:
     print("Error al leer el archivo: ", e)
     # Agrega aquí el código para manejar el error
@@ -106,7 +104,7 @@ valEquipamiento = valEquipamiento[valEquipamiento.EQUIPAMIENTO!=20]
 valEquipamiento = valEquipamiento[valEquipamiento.EQUIPAMIENTO!=100]
 valEquipamiento  = valEquipamiento[['CUEN', 'CEDULA_RUC','CUENTA_CONTRATO','INDEX']]
 if (valEquipamiento.size>0):
-       # print(str(valEquipamiento.size) +" inconsistencias en EQUIPAMIENTO "  +" \n")
+        print("-> "+str(valEquipamiento.size) +" inconsistencias en EQUIPAMIENTO ")
         array = valEquipamiento.to_numpy()
         for i in array:
             bandera=True
@@ -115,17 +113,14 @@ if (valEquipamiento.size>0):
             ced_ruc.append(i[1])
             cuenta.append(i[2])
             inconsis.append("EQUIPAMIENTO")
-else: 
-   print("no existe inconsistencias en EQUIPAMIENTO"  +" \n")
+
 
 incondf['LINEA_REGISTRO']=indice
 incondf['CUEN']=cuen
 incondf['CUENTA_CONTRATO'] = cuenta
 incondf['CAMPOS_INCONSISTENCIAS'] = inconsis
 
-
-
-
 if bandera:
     incondf.to_csv(ruta_completa_final)
+    print("-> Se genero un reporte de las inconsistencias encontradas Descargar Logs...")
 
