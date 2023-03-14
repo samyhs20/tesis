@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let sendEmpresa = document.querySelector("#send_empresa");
     let ventanaModal = document.querySelector(".modal-content");
     let botonProcesar = document.querySelector("#boton_ingreso");
+
     form.addEventListener("submit", function (e) {
         e.preventDefault();
         subir_archivos(document.querySelector("#subir_form"));
@@ -26,15 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function subir_archivos(form) {
+    let divlogs = document.querySelector("#contentLogs");
     let barra_estado = document.querySelector("#barra_estado");
     let span = document.querySelector(".barra_azul_span");
     let boton_cancelar = document.querySelector("#boton_cancelar");
     barra_estado.classList.remove("barra_verde", "barra_roja");
+
     //request Ajax
     let peticion = new XMLHttpRequest();
     peticion.upload.addEventListener("progress", (e) => {
         let porcentaje = Math.round((e.loaded / e.total) * 100);
         //console.log(porcentaje);
+        divlogs.style.display = "none";
         barra_estado.style.width = porcentaje + "%";
         span.innerHTML = porcentaje + "%";
     });
@@ -43,9 +47,35 @@ function subir_archivos(form) {
         barra_estado.classList.add("barra_verde");
         span.innerHTML = "Proceso Completado";
         let respuesta = JSON.parse(peticion.response);
-        $('#contentLogs').html("<pre>"+respuesta.content+"</pre>");
+        divlogs.style.display = "block";
+        if (respuesta.bandera == 1) {
+            $("#contentLogs").html(
+                "<pre>" +
+                    respuesta.content +
+                    "</pre>" +
+                    '<button onclick="descarga(' +
+                    "'" +
+                    respuesta.archivo +
+                    "'" +
+                    ')" class="btn btn-primary">Descargar archivo</button>'
+            );
+        } else {
+            $("#contentLogs").html("<pre>" + respuesta.content + "</pre>");
+            $.ajax({
+                //{{ route('operaciones.institucion.detalle') }}
+                url: "../api/proceso",
+                method: "post",
+                data: {
+                    'archivo': respuesta.catastro,
+                    'empresa': respuesta.empresa,
+                },
+                success: function(response){
+                    console.log(response)
+                }
+            });
+        }
 
-//console.log(respuesta.output);
+        //console.log(respuesta.output);
     });
     //send data
     peticion.open("POST", "catastro");
@@ -80,4 +110,17 @@ function modal_espera() {
     let contenido = document.querySelector("#loading");
     contenido.classList.remove("ocultar");
     contenido.classList.add("mostrar");
+}
+function descarga(archivo) {
+    console.log(archivo);
+
+    fetch(`../api/descargar/${archivo}`)
+        .then((response) => response.blob())
+        .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = archivo;
+            a.click();
+        });
 }

@@ -40,6 +40,5 @@ Route::middleware('auth')->group(function () {
 //RUTAS PARA CATASTRO
 Route::prefix('catastro')->group(function () {
     Route::get('/', [CatastroController::class, 'index'])->name('catastro.index');
-
     Route::post('/', [CatastroController::class, 'cargaData'])->name('catastro.upload');
 });

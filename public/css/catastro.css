@@ -26,30 +26,28 @@
     margin-bottom: 20px;
 }
 .barra_azul{
-    background-color: #247CC0;
-    border-radius: 10px;
+    background-color: #1a97f7;
     display: block;
-    height: 25px;
-    line-height: 25px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     width: 0%;
 }
 .barra_verde{
-    background-color: #2EA265 !important;
+    background-color: #0add6c !important;
     margin-top: 10px;
     text-align: center;
 }
 .barra_roja{
-    background-color: #DE3152 !important;
+    background-color: #d70b31 !important;
     margin-top: 10px;
     width: 50% !important;
     text-align: center;
 }
 .barra_condiciones{
     margin-top: 10px;
-    width: 50% !important;
     text-align: center;
-
+    color: #ffffff;
 }
 .contenedor{
     max-width: 80%;
