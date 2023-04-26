@@ -449,7 +449,7 @@
     <database>base_pruebas_mini</database>
     <port>5432</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4cb79ce10cc9da0ce</password>
+    <password>Encrypted 2be98afc86aa7f2e4aa1da379d0c3fd89</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -874,11 +874,9 @@ where fecha_fin_vigencia=? and actual=1;</sql>
     <fields>
       <field>
         <name>fecha_anterior</name>
-        <rename/>
       </field>
       <field>
         <name>fecha_nueva</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>

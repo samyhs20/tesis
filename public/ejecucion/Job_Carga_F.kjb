@@ -309,7 +309,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./ActualizacionTablaLecturas.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/ActualizacionTablaLecturas.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -380,7 +380,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./LecturaNueva.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/LecturaNueva.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -429,7 +429,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./ActualizacionTablaDocumento.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/ActualizacionTablaDocumento.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -478,7 +478,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./NuevoDocumento.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/NuevoDocumento.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -527,7 +527,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./ActualizacionTablaCuenta.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/ActualizacionTablaCuenta.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -576,7 +576,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./NuevoCuenta.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/NuevoCuenta.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -625,7 +625,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./ActualizacionTabla.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/ActualizacionTabla.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -674,7 +674,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./TestNuevo.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/TestNuevo.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -723,7 +723,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./NuevaTiempo.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/NuevaTiempo.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -772,7 +772,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>./Validacion_Tabla_Hechos.ktr</filename>
+      <filename>C:/xampp/htdocs/Tarifa_dashboard/public/ejecucion/Validacion_Tabla_Hechos.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

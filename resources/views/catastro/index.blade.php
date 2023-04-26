@@ -47,7 +47,10 @@
                         <div class="col-sm text-center">
                             <div class="d-grid gap-2 col-6 mx-auto boton_ingreso">
                                 <button class="btn btn-primary" type="submit" id="boton_ingresar"
-                                    style="background: #212529">Ingresar Informacion</button>
+                                    style="background: #212529">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    Ingresar Informacion
+                                </button>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto cancelar">
                                 <button class="btn btn-danger" type="button" id="boton_cancelar"

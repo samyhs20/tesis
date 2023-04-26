@@ -19,11 +19,8 @@ class CatastroController extends Controller
         $content = '';
         date_default_timezone_set('America/Guayaquil');
         $size = $request->file('archivo')->getSize();
-        $output = [];
-        $bandera = 0;
         $input = $request->all();
-        $catastro = '';
-        $pythonScript = base_path('app/Python/validacion_previa.py');
+
         // $pythonScript = base_path('app/Python/validacion_previa.py');
         if ($request->hasFile('archivo') && $size < 22000000000) {
             $path = $request->file('archivo')->getRealPath();
@@ -31,40 +28,57 @@ class CatastroController extends Controller
             // Ruta absoluta al script Python
             $nombre_final = date('d-m-y') . '-' . date('H-i-s') . '-' . $nombre_base;
             $path2 = $request->file('archivo')->storeAs('data', $nombre_final, 'public');
-            $logs = base_path('public/data/logs.txt');
-            $comando = "python $pythonScript $nombre_final >  $logs";
-
-            try {
-                exec($comando, $output);
-                $filename = public_path('data/logs.txt');
-                $content = file_get_contents($filename);
-
-                $path_inconsistencia = base_path('public\data\inconsistencias\inconsistencias_' . $nombre_final);
-                if (file_exists($path_inconsistencia)) {
-                    //  $content .= 'archivo se va a eliminar '.base_path('public/data/'.$path2);
-                    unlink(base_path('public/data/' . $path2));
-                    $bandera = 1;
-                } else {
-                    $bandera = 0;
-                    $catastro = base_path('public/data/' . $path2);
-                    // el archivo no existe en la ruta especificada
-                }
-                //$content = file_get_contents($filename);
-            } catch (Exception $e) {
-                $output = 'Error: ' . $e->getMessage();
-            }
-
             return response()->json([
-                'msg' => $output,
-                'content' => $content,
-                'archivo' => 'inconsistencias_' . $nombre_final,
-                'bandera' => $bandera,
-                'catastro' => $catastro,
+                'msg' => '',
+                'content' => 'Archivo listo para prevalidaciones....',
+                'archivo' => $nombre_final,
+                'catastro_validar' => $path2,
                 'empresa' => $input['empresa_id'],
             ]);
         } else {
-            return response()->json(['msg' => 'Error en carga Archivo no se pudo subir']);
+            return response()->json(['content' => 'Error en carga Archivo no se pudo subir']);
         }
+    }
+
+    function validacionPython(Request $request)
+    {
+        $input = $request->all();
+        $nombre_final = $input['archivo'];
+        $path2 = $input['catastro_validar'];
+        $catastro = '';
+        $bandera = 0;
+        $logs = base_path('public/data/logs.txt');
+        $pythonScript = base_path('app/Python/validacion_previa.py');
+        $comando = "python $pythonScript $nombre_final >  $logs";
+        $output = "";
+        try {
+            exec($comando);
+            //session()->put('pid', $pid);
+            $filename = public_path('data/logs.txt');
+            $content = file_get_contents($filename);
+            $path_inconsistencia = base_path('public\data\inconsistencias\inconsistencias_' . $nombre_final);
+
+            if (file_exists($path_inconsistencia)) {
+                //  $content .= 'archivo se va a eliminar '.base_path('public/data/'.$path2);
+                unlink(base_path('public/data/' . $path2));
+                $bandera = 1;
+            } else {
+                $bandera = 0;
+                $catastro = base_path('public/data/' . $path2);
+                // el archivo no existe en la ruta especificada
+            }
+            //$content = file_get_contents($filename);
+        } catch (Exception $e) {
+            $output = 'Error: ' . $e->getMessage();
+        }
+        return response()->json([
+            'msg' => $output,
+            'content' => $content,
+            'archivo' => 'inconsistencias_' . $nombre_final,
+            'bandera' => $bandera,
+            'catastro' => $catastro,
+            'empresa' => $input['empresa'],
+        ]);
     }
 
     public function descargarArchivo($archivo)
@@ -80,7 +94,7 @@ class CatastroController extends Controller
     function procesamientoCatastro(Request $request)
     {
         $input = $request->all();
-       /* //flujo de ejecucion
+        /* //flujo de ejecucion
         $flujo = "/file:\"C:\Users\santi\OneDrive\Documentos\Santiago Castro\Tesis\Pentaho_Curso\Job_Carga_F.kjb\"";
         //catastro
         $catastro = "\"/param:archivo=$documento_ingresado\"";
@@ -106,8 +120,15 @@ class CatastroController extends Controller
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         }*/
-        $flujo = "Job_Carga_F.kjb";
+        $flujo = 'Job_Carga_F.kjb';
 
         return response()->json(['data' => $input]);
+    }
+    function suspenderCatastro(Request $request)
+    {
+        $pythonScript = base_path('app/Python/validacion_previa.py');
+        // $python_script_name = 'my_python_script.py'; // nombre del script Python
+        $pid = session()->get('pid');
+        return response()->json(['pid' => $pid]);
     }
 }

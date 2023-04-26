@@ -1,11 +1,7 @@
-from asyncio.windows_events import NULL
-from msilib.schema import Directory
-from sre_constants import IN
 import pandas as pd
 import sys
 import os
-
-
+import signal
 bandera = False
 def Validador (data,d, name,indice,cuen, ced_ruc, cuenta, inconsis, aux):
     nulos=data[d.isnull()]
@@ -37,7 +33,7 @@ inconsis = []
 ruta_completa = os.path.abspath(os.path.join('data','data', name_inicial))
 
 ruta_completa_final = os.path.abspath(os.path.join('data','inconsistencias','inconsistencias_'+name_inicial))
-
+print("------>  Archivo de inconsistencias " + ruta_completa_final)
 try:
     df = pd.read_csv(ruta_completa, sep=',',on_bad_lines='skip' )
     df['INDEX'] = df.index
@@ -113,7 +109,7 @@ try:
         print("Listo para el procesamiento de los datos")
 
 except Exception as e:
-    print("Error al leer el archivo: " +  e)
+    print(e)
     # Agrega aquí el código para manejar el error
 
 
