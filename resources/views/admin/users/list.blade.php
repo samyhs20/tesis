@@ -31,17 +31,18 @@
                             </thead>
                             <tbody>
                               @foreach ($users as $user)
-                              @if(!($user->role === 'admin'))
+                              @if(!($user->rol == 'admin' ))
                               <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->cedula }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>@if ($user->rol  == 'admin') 
-                                    Administrador
-                                    @else 
-                                    Usuario
-                                @endif
-                            </td>
+                                <td>
+                                  @if ($user->rol  == 'admin') 
+                                  Administrador
+                                  @else 
+                                  Usuario
+                                  @endif
+                                </td>
                                 <td>
                                     <a href="#" data-id={{$user->id}} class= "btn btn-info btn-sm editbtn" >
                                         <i class="fas fa-marker"></i>

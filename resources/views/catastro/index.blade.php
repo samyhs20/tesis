@@ -48,7 +48,8 @@
                             <div class="d-grid gap-2 col-6 mx-auto boton_ingreso">
                                 <button class="btn btn-primary" type="submit" id="boton_ingresar"
                                     style="background: #212529">
-                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    <span class="spinner-border spinner-border-sm d-none" role="status"
+                                        aria-hidden="true"></span>
                                     Ingresar Informacion
                                 </button>
                             </div>
@@ -77,80 +78,36 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="d-grid gap-2 col-6 mx-auto boton_ingreso">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                        id="procesamiento">
-                        Procesar Informacion
-                    </button>
-                </div>
-
-
-
-
-
-                <div class="row">
-
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-                <br>
-
             </div>
         </div>
 
-        <div class="py-12">
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 " style="text-align: center;">
-
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <!-- spinner -->
-                        <div id="loading" class="ocultar centrar_gif">
-                            <img src="{{ url('/images/gif_agencia.gif') }}" alt="Cargando...">
-                            <p class="text_blank t_s-15">Un momento....</p>
-                        </div>
-
-                        <div class="modal-content" id="ventana_modal">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Ingreso de la empresa</h5>
-                                <button type="button" class="close" id=close data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="archivo_procesar.php" method="POST" id="send_empresa" onsubmit="modal_espera()">
-                                <div class="modal-body">
-                                    <p>Escoja la empresa Distribuidora</p>
-                                    <select name="empresa_id1" class="form-select form-select-sm"
-                                        aria-label=".form-select-sm example">
-                                        <option selected>Seleccione</option>
-                                        <option value="1">Empresa Quito</option>
-                                        <option value="2">Empresa Guayaqui</option>
-                                        <option value="3">Centro Sur</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        id="close_letras">Cerrar</button>
-                                    <button type="submit" class="btn btn-primary">Procesar</button>
-                                </div>
-                            </form>
-                        </div>
-
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Procesando Datos. </h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Esto puedo tardar algunos minutos...
+                        Espere que el este mensaje se cierre. </p>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </div>
+                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
+        </div>
+
     </x-app-layout>
+
+
 @stop
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/estilos.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/css/catastro.css') }}">
-
-
 @stop
 
 @section('js')

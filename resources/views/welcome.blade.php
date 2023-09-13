@@ -84,7 +84,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Sistema</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -96,7 +96,7 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 " style="text-align: center;">
-                <div style="font-size: 50px;  font-weight: 600;  color: #17a2b8"> DIRECCIÓN DE CONTROL Y COMERCIALIZACIÓN <br> DEL SECTOR ELÉCTRICO</div>
+                <div style="font-size: 50px;  font-weight: 600;  color: #17a2b8"> DIRECCIÓN DE CONTROL Y DISTRIBUCIÓN DE COMERCIALIZACIÓN <br> DEL SECTOR ELÉCTRICO</div>
                 <div style="margin:50px"></div>
                 <div style="font-size: 55px;  font-weight: 800;  color:white"> Sistema de Control Tarifario y Facturación</div>
                 <div style="margin:50px"></div>

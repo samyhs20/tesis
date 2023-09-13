@@ -1,4 +1,5 @@
------->  LOG DE CARGA PREVIA DEL ARCHIVO 26-04-23-12-37-21-elementos2.csv
------->  Archivo de inconsistencias C:\xampp\htdocs\Tarifa_dashboard\public\data\inconsistencias\inconsistencias_26-04-23-12-37-21-elementos2.csv
+------>  LOG DE CARGA PREVIA DEL ARCHIVO 26-04-23-16-37-13-nuevo.csv
+------>  Archivo de inconsistencias C:\xampp\htdocs\Tarifa_dashboard\public\data\inconsistencias\inconsistencias_26-04-23-16-37-13-nuevo.csv
  -> archivo cargado correctamente 
-'DataFrame' object has no attribute 'FECHA_EMISION'
+Catastro Correctamente ingresado
+Listo para el procesamiento de los datos

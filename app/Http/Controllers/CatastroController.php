@@ -50,7 +50,7 @@ class CatastroController extends Controller
         $logs = base_path('public/data/logs.txt');
         $pythonScript = base_path('app/Python/validacion_previa.py');
         $comando = "python $pythonScript $nombre_final >  $logs";
-        $output = "";
+        $output = '';
         try {
             exec($comando);
             //session()->put('pid', $pid);
@@ -77,7 +77,6 @@ class CatastroController extends Controller
             'archivo' => 'inconsistencias_' . $nombre_final,
             'bandera' => $bandera,
             'catastro' => $catastro,
-            'empresa' => $input['empresa'],
         ]);
     }
 
@@ -93,9 +92,18 @@ class CatastroController extends Controller
 
     function procesamientoCatastro(Request $request)
     {
+        
+        date_default_timezone_set('America/Guayaquil');
+        //$DateAndTime = date('m-d-Yh-i-sa', time());  
+        $DateAndTime = date('Y-m-d-h-i', time());
+        $fecha_parametro = $DateAndTime;
         $input = $request->all();
-        /* //flujo de ejecucion
-        $flujo = "/file:\"C:\Users\santi\OneDrive\Documentos\Santiago Castro\Tesis\Pentaho_Curso\Job_Carga_F.kjb\"";
+        $documento_ingresado= $input['archivo'];
+        $empresa_ingresada=$input['empresa'];
+        //flujo de ejecucion
+        //C:\xampp\htdocs\Tarifa_dashboard\public\ejecucion\Job_Carga_F.kjb
+        //file:///C:/xampp/htdocs/Tarifa_dashboard/public\u001bjecucion/Job_Carga_F.kjb
+        $flujo = "/file:\"C:\\xampp\htdocs\Tarifa_dashboard\public\\ejecucion\Job_Carga_F.kjb\"";
         //catastro
         $catastro = "\"/param:archivo=$documento_ingresado\"";
         //empresa
@@ -104,7 +112,7 @@ class CatastroController extends Controller
         $fecha_fin = "\"/param:fecha=$fecha_parametro\"";
         //--------------------------------------
         //$url_ejecucion="call \"C:\Program Files\Pentaho-DataIntegration\kitchen.bat\" /file:\"C:\Users\santi\OneDrive\Documentos\Santiago Castro\Tesis\Pentaho_Curso\Job_Test.kjb\" \"/param:archiv=C:\Users\santi\Downloads\lementos.csv\" \"param:empresa=1\" \"/param:fecha=2023-02-21-17-20\"";
-        $url_ejecucion = "call \"C:\Program Files\Pentaho-DataIntegration\kitchen.bat\" $flujo $catastro $empresa $fecha_fin";
+        $url_ejecucion = "call \"C:\Program Files\Pentaho-data-integration\kitchen.bat\" $flujo $catastro $empresa $fecha_fin";
         //echo $url_ejecucion;
         $output = null;
         $retval = null;
@@ -119,10 +127,10 @@ class CatastroController extends Controller
             //print_r($retval);
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
-        }*/
-        $flujo = 'Job_Carga_F.kjb';
+        };
+       // $flujo = 'Job_Carga_F.kjb';
 
-        return response()->json(['data' => $input]);
+        return response()->json(['data' => $input , 'fecha'=>$fecha_parametro, 'out'=>$output, 'ret'=>$retval]);
     }
     function suspenderCatastro(Request $request)
     {

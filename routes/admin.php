@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\CSVController;
 
-Route::get('', [HomeController::class, 'index']);
+Route::get('', [HomeController::class, 'index'])->name('home');
 
 //usuarios
 Route::get('/users', [UserController::class, 'index'])->name('user.list');

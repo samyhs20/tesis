@@ -18,16 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
         botonProcesar.disabled = true; // deshabilita el botón
     });
 
-    sendEmpresa.addEventListener("submit", (event) => {
-        //modal_espera();
-        ventanaModal.style.display = "none";
-        botonProcesar.disabled = true;
-    });
-
-    //btn_procesar.addEventListener('click',procesamiento);
-    procesamiento_modal.addEventListener("click", abrir_modal);
-    closeModal.addEventListener("click", cerrar_modal);
-    closeSimbolo.addEventListener("click", cerrar_modal);
 });
 
 function subir_archivos(form) {
@@ -64,7 +54,7 @@ function subir_archivos(form) {
             method: "post",
             data: {
                 archivo: respuesta.archivo,
-                empresa: respuesta.empresa,
+                //empresa: respuesta.empresa,
                 catastro_validar: respuesta.catastro_validar,
             },
             success: function (response) {
@@ -86,6 +76,19 @@ function subir_archivos(form) {
                     $("#contentLogs").html(
                         "<pre>" + response.content + "</pre>"
                     );
+                    $("#exampleModal").modal("show");
+                    $.ajax({
+                        url: "../api/proceso/",
+                        method: "post",
+                        data: {
+                            archivo: response.catastro,
+                            empresa: respuesta.empresa,
+                        },
+                        success: function (response) {
+                            console.log(response)
+                            $("#exampleModal").modal("hide");
+                        },
+                    });
                 }
             },
         });
@@ -102,25 +105,11 @@ function subir_archivos(form) {
         spinner.classList.add("d-none"); // quitar el spinner
         botonProcesar.disabled = false; // habilita el botón
         span.innerHTML = "Proceso Cancelado";
-        
     });
 }
 
-function visualizarInformacion() {
-    let res = document.querySelector("#response");
-    $.get("visualizar_archivo.php", function (info, estado) {
-        res.innerHTML += info;
-    });
-}
-
-function presionado() {
-    var result = "<?php php_func(); ?>";
-}
-function abrir_modal() {
-    $("#exampleModal").modal("show");
-}
 function cerrar_modal() {
-    $("#exampleModal").modal("hide");
+    
 }
 
 function modal_espera() {
