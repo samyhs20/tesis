@@ -42,7 +42,7 @@ Route::POST('/deleteRegistro/{id}', [PliegoTarifaController::class, 'deleteRegis
 Route::POST('/pliego/save', [CSVController::class, 'guardarpliego']);
 
 Route::GET('/descargar/{archivo}', [CatastroController::class, 'descargarArchivo'])->name('descargar.inconsistencias');
-Route::POST('/proceso', [CatastroController::class, 'procesamientoCatastro']);
+Route::GET('/proceso', [CatastroController::class, 'procesamientoCatastro']);
 Route::POST('/proceso/python', [CatastroController::class, 'validacionPython']);
 //Route::POST('/suspender', [CatastroController::class, 'suspenderCatastro']);
 

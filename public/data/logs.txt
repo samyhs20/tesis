@@ -1,5 +1,5 @@
------->  LOG DE CARGA PREVIA DEL ARCHIVO 26-04-23-16-37-13-nuevo.csv
------->  Archivo de inconsistencias C:\xampp\htdocs\Tarifa_dashboard\public\data\inconsistencias\inconsistencias_26-04-23-16-37-13-nuevo.csv
+------>  LOG DE CARGA PREVIA DEL ARCHIVO 13-09-23-18-44-10-parcial_202901.csv
+------>  Archivo de inconsistencias C:\xampp\htdocs\Tarifa_dashboard\public\data\inconsistencias\inconsistencias_13-09-23-18-44-10-parcial_202901.csv
  -> archivo cargado correctamente 
 Catastro Correctamente ingresado
 Listo para el procesamiento de los datos

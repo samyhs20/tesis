@@ -1,6 +1,7 @@
 let botonProcesar = document.querySelector("#boton_ingresar");
 let botonCancelar = document.querySelector("#boton_cancelar");
 let spinner = document.querySelector("#boton_ingresar .spinner-border");
+var ajaxCompleted = false;
 document.addEventListener("DOMContentLoaded", () => {
     let form = document.querySelector("#subir_form");
     let res = document.querySelector("#response");
@@ -73,20 +74,31 @@ function subir_archivos(form) {
                             ')" class="btn btn-primary">Descargar archivo</button>'
                     );
                 } else {
+                    
                     $("#contentLogs").html(
                         "<pre>" + response.content + "</pre>"
                     );
+                    $('#exampleModal').on('hide.bs.modal', function (e) {
+                        if (!ajaxCompleted) {
+                            e.preventDefault(); // Evita que el modal se cierre automáticamente
+                            // Puedes mostrar un mensaje de espera o realizar cualquier otra acción aquí
+                        }
+                    });
                     $("#exampleModal").modal("show");
                     $.ajax({
-                        url: "../api/proceso/",
-                        method: "post",
+                        url: "../api/proceso",
+                        method: "get",
                         data: {
                             archivo: response.catastro,
                             empresa: respuesta.empresa,
                         },
                         success: function (response) {
-                            console.log(response)
+                            console.log(response);
+                            ajaxCompleted = true; 
                             $("#exampleModal").modal("hide");
+                            $("#contentLogs").html(
+                                "<pre> Datos procesados Correctamente</pre>"
+                            );
                         },
                     });
                 }

@@ -119,16 +119,9 @@ class CatastroController extends Controller
 
         try {
             exec($url_ejecucion, $output, $retval);
-
-            //for($i=800;$i<count($output);$i++){
-            // print_r($output[$i].'\n');
-            //}
-            //print_r($output);
-            //print_r($retval);
         } catch (Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         };
-       // $flujo = 'Job_Carga_F.kjb';
 
         return response()->json(['data' => $input , 'fecha'=>$fecha_parametro, 'out'=>$output, 'ret'=>$retval]);
     }

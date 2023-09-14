@@ -25,8 +25,8 @@
     </div>
 
 
-    <div id="tabla_general" style="display:block">
-        <table id="table_tarifas" class="display nowrap" style="width:100%">
+    <div id="tabla_general" style="display:none">
+        <table id="table_tarifas" class="display nowrap" style="width:100%" >
             <thead>
                 <tr>
                     <th>Código</th>

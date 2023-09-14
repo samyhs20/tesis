@@ -3,10 +3,6 @@
 @section('plugins.Datatables', true)
 
 
-@section('content_header')
-    <h1>Subir Informacion de las Empresas Distribuidoras</h1>
-@stop
-
 @section('content')
     <x-app-layout>
 
@@ -24,7 +20,7 @@
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="archivo" name="archivo"
                                         lang="es">
-                                    <label class="custom-file-label" for="documentoTa">Escoge Archivo</label>
+                                    <label class="custom-file-label" for="documentoTa">Escoger Archivo</label>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +32,7 @@
                             <div class="col-sm-8">
                                 <div class="mb-3" style="text-align: start;">
                                     <select class="form-control" name="empresa_id" id="empresa_id" required>
-                                        <option value="">-- Escoja una opción --</option>
+                                        <option value="">-- Escoger una opción --</option>
                                         @foreach ($empresas as $pliego)
                                             <option value="{{ $pliego->id }}">{{ $pliego->descripcion }}</option>
                                         @endforeach
@@ -50,7 +46,7 @@
                                     style="background: #212529">
                                     <span class="spinner-border spinner-border-sm d-none" role="status"
                                         aria-hidden="true"></span>
-                                    Ingresar Informacion
+                                    Ingresar Información
                                 </button>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto cancelar">

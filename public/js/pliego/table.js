@@ -1,5 +1,12 @@
 $(document).ready(function () {
-    $("#btnverificar").click(listar);
+    //$("#btnverificar").click(listar);
+    $("#btnverificar").click(function () {
+        listar();
+
+        // Muestra la tabla después de que se complete la solicitud AJAX
+        $("#tabla_general").css("display", "block");
+    });
+
 });
 
 $(document).on("click", "myFunction", function () {
@@ -31,6 +38,7 @@ function listar() {
                 destroy: true,
                 lengthChange: false,
                 language: {
+                    search: "FILTRAR", // Cambia el texto de búsqueda aquí
                     lengthMenu: "_MENU_",
                     zeroRecords: "No se ha encontrado",
                     info: "Página número _PAGE_ of _PAGES_",
@@ -42,6 +50,7 @@ function listar() {
                         next: "Después",
                         last: "Último",
                     },
+                    
                 },
                 columns: [
                     { data: "codigo" },
@@ -76,7 +85,9 @@ function listar() {
                 scrollX: true,
                 processing: true,
                 destroy: true,
+                lengthChange: false,
                 language: {
+                    search: "FILTRAR", // Cambia el texto de búsqueda aquí
                     lengthMenu: "Mostrar _MENU_ registros por página",
                     zeroRecords: "No se ha encontrado",
                     info: "Página número _PAGE_ of _PAGES_",
