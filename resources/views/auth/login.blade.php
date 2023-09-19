@@ -1,10 +1,9 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    @section('title', 'Ingresar')
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
         <div>
             <x-input-label for="cedula" :value="__('Cédula')" />

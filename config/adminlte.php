@@ -292,16 +292,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
-        ['header' => 'Administrar Usuarios'],
+        ['header' => 'Administrar Usuarios',
+        'can'=> 'browse-admin'],
         [
             'text'        => 'Usuarios',
             'route'         => 'user.list',
@@ -337,9 +333,9 @@ return [
             'icon' => 'fas fa-fw fa-file-import',
         ],
         [
-            'text' => 'Dashboard',
+            'text' => 'Proyeccion',
             'route'  => 'dashboard.index',
-            'icon' => 'fas fa-fw fa-file-import',
+            'icon' => 'fas fa-fw fa-chart-bar',
         ],
     ],
 

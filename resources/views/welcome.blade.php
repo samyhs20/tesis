@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DCDCSE</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
             .ml-12{margin-left:3rem}
             .-mt-px{margin-top:-1px}
             .max-w-6xl{max-width:72rem}
-            .min-h-screen{min-height:100vh}
+            .min-h-screen{min-height:90.5vh}
             .overflow-hidden{overflow:hidden}
             .p-6{padding:1.5rem}
             .py-4{padding-top:1rem;padding-bottom:1rem}
@@ -77,6 +77,15 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            footer p {
+    margin-bottom: 5px; /* Espaciado entre párrafos */
+    font-size: 14px; /* Tamaño de fuente */
+    
+}
+/* Estilo personalizado para reducir el interlineado entre los renglones */
+footer .footer-line {
+    margin-top: 3px; /* Ajusta el espaciado entre los renglones */
+}
         </style>
     </head>
     <body class="antialiased">
@@ -86,22 +95,33 @@
                     @auth
                         <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Sistema</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 " style="text-align: center;">
+            <div class=" mx-auto sm:px-6 lg:px-8 " style="text-align: center;">
+                <img src="{{url('images\favicon.png')}}" style="width: 150px"> 
                 <div style="font-size: 50px;  font-weight: 600;  color: #17a2b8"> DIRECCIÓN DE CONTROL Y DISTRIBUCIÓN DE COMERCIALIZACIÓN <br> DEL SECTOR ELÉCTRICO</div>
-                <div style="margin:50px"></div>
-                <div style="font-size: 55px;  font-weight: 800;  color:white"> Sistema de Control Tarifario y Facturación</div>
-                <div style="margin:50px"></div>
               
+                <div style="font-size: 55px;  font-weight: 800;  color:white"> Sistema de Control Tarifario y Facturación</div>
+                             
             </div>
         </div>
+        
     </body>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright">&copy; {{ date('Y') }} - Universidad Central del Ecuador</p>
+                    <p class="footer-line">Facultad de Ingeniería y Ciencias Aplicadas - Carrera de Informática</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>

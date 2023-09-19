@@ -106,7 +106,5 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
 </body>
-
 </html>

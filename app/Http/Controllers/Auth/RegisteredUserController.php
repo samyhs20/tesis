@@ -36,8 +36,9 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class, new CustomEmailValidation],
-            'cedula' => ['required', 'numeric', 'digits:10', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'cedula' => ['required', 'numeric', 'digits:10', 'valid_ec_cedula','unique:'.User::class],
+            'password' => ['required', 'confirmed', 'password_policy', Rules\Password::defaults()],
+//            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
@@ -50,8 +51,12 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+//        Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+ //       event(new Registered($user));
+
+   //     Auth::login($user);
+    
+        return redirect()->route('verification.notice');
     }
 }
