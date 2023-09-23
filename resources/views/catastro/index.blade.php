@@ -5,7 +5,7 @@
 
 @section('content')
     <x-app-layout>
-
+        <audio id="notification-sound" src="..\audio\alerta.mp3" preload="auto"></audio>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -82,11 +82,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Procesando Datos. </h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Procesando Datos... </h5>
                     </div>
-                    <div class="modal-body">
-                        <p>Esto puedo tardar algunos minutos...
-                        Espere que el este mensaje se cierre. </p>
+                    <div class="modal-body" >
+                        <p id="ModalBodyProceso"> </p>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     </div>
                     <div class="modal-footer">

@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('browse-admin', function ($user) {
  
-            if ($user->rol== 'admin'){
+            if ($user->rol== 'Administrador'){
                 return true;
             }
  

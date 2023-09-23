@@ -1,34 +1,4 @@
------->  LOG DE CARGA PREVIA DEL ARCHIVO 15-09-23-13-29-06-201902.csv
------->  Archivo de inconsistencias C:\xampp\htdocs\Tarifa_dashboard\public\data\inconsistencias\inconsistencias_15-09-23-13-29-06-201902.csv
+------>  LOG DE CARGA PREVIA DEL ARCHIVO 21-09-23-11-29-30-parcial_202901.csv
  -> archivo cargado correctamente 
--> Se tiene 1 inconsistencias en la columna >>FECHA DE VENCIMIENTO
--> Se tiene 1 inconsistencias en la columna >>TIPO DE DOCUMENTO
--> Se tiene 1 inconsistencias en la columna >>NRO COMPROBANTE
--> Se tiene 1 inconsistencias en la columna >>CUEN
--> Se tiene 1 inconsistencias en la columna >>TIPO DOCUMENTO
--> Se tiene 1 inconsistencias en la columna >>CUENTA CONTRATO
--> Se tiene 2 inconsistencias en la columna >>PROVINCIA
--> Se tiene 2 inconsistencias en la columna >>CANTON
--> Se tiene 2 inconsistencias en la columna >>PARROQUIA
--> Se tiene 1 inconsistencias en la columna >>FECHA NACIMIENTO
--> Se tiene 1 inconsistencias en la columna >>TERCERA EDAD
--> Se tiene 1 inconsistencias en la columna >>FECHA INGRESO
--> Se tiene 1 inconsistencias en la columna >>CEDULA O RUC
--> Se tiene 1 inconsistencias en la columna >>NOMBRE
--> Se tiene 1 inconsistencias en la columna >>ENERGIA
--> Se tiene 1 inconsistencias en la columna >>VOLTAJE
--> Se tiene 1 inconsistencias en la columna >>CODIGO TARIFA
--> Se tiene 1 inconsistencias en la columna >>TIPO USUARIO
--> Se tiene 1 inconsistencias en la columna >>TIPO DE CONSUMO
--> Se tiene 1 inconsistencias en la columna >>FECHA INICIO
--> Se tiene 1 inconsistencias en la columna >>FECHA FIN 
--> Se tiene 1 inconsistencias en la columna >>LECTURA ANTERIOR_A
--> Se tiene 1 inconsistencias en la columna >>LECTURA ACTUAL_A
--> Se tiene 1 inconsistencias en la columna >>LECTURA ANTERIOR_B
--> Se tiene 1 inconsistencias en la columna >>LECTURA ACTUAL_B
--> Se tiene 1 inconsistencias en la columna >>LECTURA ANTERIOR_C
--> Se tiene 1 inconsistencias en la columna >>LECTURA ACTUAL_C
--> Se tiene 1 inconsistencias en la columna >>LECTURA ANTERIOR_D
--> Se tiene 1 inconsistencias en la columna >>LECTURA ACTUAL_D
--> 4 inconsistencias en EQUIPAMIENTO 
--> Se genero un reporte de las inconsistencias encontradas Descargar Logs...
+Catastro Correctamente ingresado
+Listo para el procesamiento de los datos

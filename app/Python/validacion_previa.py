@@ -33,7 +33,6 @@ inconsis = []
 ruta_completa = os.path.abspath(os.path.join('data','data', name_inicial))
 
 ruta_completa_final = os.path.abspath(os.path.join('data','inconsistencias','inconsistencias_'+name_inicial))
-print("------>  Archivo de inconsistencias " + ruta_completa_final)
 try:
     df = pd.read_csv(ruta_completa, sep=',',on_bad_lines='skip' )
     df['INDEX'] = df.index

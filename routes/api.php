@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::GET('/editRol/{id}', [UserController::class, 'findUser']);
-Route::POST('/saveRol/{id}', [UserController::class, 'updateRol']);
+Route::POST('/saveRol/{id}', [UserController::class, 'update']);
 Route::get('/pliego/{id}', 'App\Http\Controllers\PliegoTarifaController@list');
 Route::post('/edit', [PliegoTarifaController::class, 'action'])->name('pliego.action');
 

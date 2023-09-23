@@ -50,9 +50,18 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'cedula' => trans('autenticacin fallida'),
+                'cedula' => trans('autenticación fallida. credenciales incorrectas'),
             ]);
         }
+            // Verifica si el usuario está activo
+    $user = Auth::user();
+    if (!$user->activo) {
+        Auth::logout(); // Cerrar sesión si el usuario no está activo
+        throw ValidationException::withMessages([
+            'cedula' => trans('Cuenta inactiva. Comuníquese con el administrador.'),
+        ]);
+    }
+
 
         RateLimiter::clear($this->throttleKey());
     }

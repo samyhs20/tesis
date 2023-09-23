@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
         spinner.classList.remove("d-none"); // muestra el spinner
         botonProcesar.disabled = true; // deshabilita el botón
     });
-
 });
 
 function subir_archivos(form) {
@@ -74,14 +73,15 @@ function subir_archivos(form) {
                             ')" class="btn btn-primary">Descargar archivo</button>'
                     );
                 } else {
-                    
                     $("#contentLogs").html(
                         "<pre>" + response.content + "</pre>"
                     );
-                    $('#exampleModal').on('hide.bs.modal', function (e) {
+                    $("#exampleModal").on("hide.bs.modal", function (e) {
+                        //response.tamanoArchivoKB
                         if (!ajaxCompleted) {
                             e.preventDefault(); // Evita que el modal se cierre automáticamente
                             // Puedes mostrar un mensaje de espera o realizar cualquier otra acción aquí
+                            $("#ModalBodyProceso").html("Datos Ingresados el archivo tiene ")
                         }
                     });
                     $("#exampleModal").modal("show");
@@ -94,11 +94,22 @@ function subir_archivos(form) {
                         },
                         success: function (response) {
                             console.log(response);
-                            ajaxCompleted = true; 
-                            $("#exampleModal").modal("hide");
-                            $("#contentLogs").html(
-                                "<pre> Datos procesados Correctamente</pre>"
-                            );
+                            ajaxCompleted = true;
+                            var notificationSound =
+                                document.getElementById("notification-sound");
+                            notificationSound.play();
+                            // Detiene la reproducción del sonido después de un segundo
+                            setTimeout(function () {
+                                notificationSound.pause();
+                                notificationSound.currentTime = 0; // Reinicia el tiempo de reproducción
+                            }, 1000); // Detener después de 1 segundo (1000 milisegundos)
+                            // Cierra el modal después de un breve retraso (puedes ajustar el tiempo según tu preferencia)
+                            setTimeout(function () {
+                                $("#exampleModal").modal("hide");
+                                $("#contentLogs").html(
+                                    "<pre> Datos procesados Correctamente</pre>"
+                                );
+                            }, 2000); // 2000 milisegundos (2 segundos) de retraso
                         },
                     });
                 }
@@ -120,9 +131,7 @@ function subir_archivos(form) {
     });
 }
 
-function cerrar_modal() {
-    
-}
+function cerrar_modal() {}
 
 function modal_espera() {
     let contenido = document.querySelector("#loading");

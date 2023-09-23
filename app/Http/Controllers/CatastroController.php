@@ -53,21 +53,20 @@ class CatastroController extends Controller
         $output = '';
         try {
             exec($comando);
-            //session()->put('pid', $pid);
             $filename = public_path('data/logs.txt');
             $content = file_get_contents($filename);
             $path_inconsistencia = base_path('public\data\inconsistencias\inconsistencias_' . $nombre_final);
 
             if (file_exists($path_inconsistencia)) {
-                //  $content .= 'archivo se va a eliminar '.base_path('public/data/'.$path2);
                 unlink(base_path('public/data/' . $path2));
                 $bandera = 1;
             } else {
                 $bandera = 0;
                 $catastro = base_path('public/data/' . $path2);
-                // el archivo no existe en la ruta especificada
+                $tamanoArchivoBytes = filesize($catastro);
+
+                $tamanoArchivoKB = round($tamanoArchivoBytes / 1024, 2); // KB
             }
-            //$content = file_get_contents($filename);
         } catch (Exception $e) {
             $output = 'Error: ' . $e->getMessage();
         }
@@ -77,6 +76,7 @@ class CatastroController extends Controller
             'archivo' => 'inconsistencias_' . $nombre_final,
             'bandera' => $bandera,
             'catastro' => $catastro,
+            'tamanoArchivoKB'=>$tamanoArchivoKB,
         ]);
     }
 

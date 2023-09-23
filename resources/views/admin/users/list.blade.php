@@ -18,7 +18,7 @@
                     <!-- ADD TASK FORM -->
                   </div>
 
-                        <div class="col-md">
+                        <div class="table-responsive">
                           <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -26,25 +26,32 @@
                                 <th>E-mail</th>
                                 <th>Cédula</th>
                                 <th>Rol</th>
+                                <th>Habilitado</th>
                                 <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody>
                               @foreach ($users as $user)
-                              @if(!($user->rol == 'admin' ))
+                              @if(!($user->id == Auth::user()->id ))
                               <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->cedula }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                  @if ($user->rol  == 'admin') 
+                                  @if ($user->rol  == 'Administrador') 
                                   Administrador
                                   @else 
                                   Usuario
                                   @endif
                                 </td>
+                                
+                                <td>@if ($user->activo  == 1) 
+                                  Habilitado
+                                  @else 
+                                  Deshabilitado
+                                  @endif</td>
                                 <td>
-                                    <a href="#" data-id={{$user->id}} class= "btn btn-info btn-sm editbtn" >
+                                    <a  data-id={{$user->id}} class= "btn btn-info btn-sm editbtn" >
                                         <i class="fas fa-marker"></i>
                                       </a>
                                     <a href="{{ route('delete',  $user->id ) }}" class="btn btn-danger">
@@ -77,12 +84,12 @@
     var idd;
         $(document).on('click', '.editbtn ', function(event) {
           idd = $(this).data('id');
-          console.log(idd);
+          //console.log(idd);
           $.ajax({
             url:"../api/editRol/"+idd, 
             type:"get",
             success :function(response){
-              $('#rol').val(response.data.rol);
+              $('#activo').val(response.data.activo);
               }
             });
         
@@ -103,16 +110,16 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content ">
         <div class="modal-header">
-            Cambiar Rol del Usuario
+            Cambiar Actividad del Usuario
         </div>
         <div class="modal-body" id="modalUpdate">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     <form id="saveUpdate" style="text-align: -webkit-center;" >
                         @csrf
-                            <select  name="rol" id="rol" required>      
-                              <option value="admin" >Administrador</option>
-                              <option value="usuario" >Usuario</option>
+                            <select  name="activo" id="activo" required>      
+                              <option value=true >Habilitado</option>
+                              <option value=false >Deshabilitado</option>
                           </select>
 
                       </form>

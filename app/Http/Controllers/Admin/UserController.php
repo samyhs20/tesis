@@ -20,26 +20,31 @@ class UserController extends Controller
         $user = User::destroy($id);
         return redirect()->to('admin/users')->with('status', "Usuario borrado correctamente");
     }
-public function updateRol(Request $request , $id){
-    $input = $request->all();
-    $politica = User::find($id);
-    $politica->rol = $input['rol'];
-    print($politica);
-    $politica->save();
-   return redirect()->to('admin.users.list')->with('status', "Usuario borrado correctamente");;
-}
-
+    public function update(Request $request, $id)
+    {
+        $input = $request->all();
+        $user = User::find($id);
+      
+        // Actualiza el estado "activo" si se proporciona
+        if (isset($input['activo'])) {
+            $user->activo = $input['activo'];
+        }
+    
+        $user->save();
+        return redirect()->to('admin/users')->with('status', "Usuario actualizado correctamente");
+    }
+    
 public function findUser(Request $request){
-    $politica = User::find($request->id);
-       return response()->json(['data'=>$politica], 200);
+    $user = User::find($request->id);
+       return response()->json(['data'=>$user], 200);
 }
 
 public function create(Request $request){
     $request->validate([
         'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-        'cedula' => ['required', 'string', 'max:15', 'unique:'.User::class],
-        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class, new CustomEmailValidation],
+        'cedula' => ['required', 'numeric', 'digits:10', 'valid_ec_cedula','unique:'.User::class],
+        'password' => ['required', 'confirmed', 'password_policy', Rules\Password::defaults()],
     ]);
 
     $user = User::create([
