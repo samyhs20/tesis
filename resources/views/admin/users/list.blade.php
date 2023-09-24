@@ -23,11 +23,11 @@
                             <thead>
                               <tr>
                                 <th>Nombre</th>
-                                <th>E-mail</th>
                                 <th>Cédula</th>
+                                <th>E-mail</th>
                                 <th>Rol</th>
-                                <th>Habilitado</th>
-                                <th>Actions</th>
+                                <th>Activo</th>
+                                <th>Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
